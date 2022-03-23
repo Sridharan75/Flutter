@@ -28,7 +28,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -43,7 +43,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -58,7 +58,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -73,7 +73,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -88,7 +88,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -103,7 +103,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -118,7 +118,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -133,7 +133,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -148,7 +148,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                   const SizedBox(
                     height: 10,
@@ -163,7 +163,7 @@ class Transaction extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey,
+                        color: Colors.blueGrey,
                       )),
                 ],
               ),
