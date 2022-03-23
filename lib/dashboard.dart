@@ -110,6 +110,18 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.pop(context);
               },
             ),
+
+            const SizedBox(
+              child : Text(
+                  'v 0.0.1', style: TextStyle(
+                color: Colors.blueGrey,
+                height: 16,
+                fontWeight: FontWeight.bold,
+              ),
+                  textAlign: TextAlign.center
+              ),
+            ),
+
           ],
         )),
         body: TabBarView(children: [

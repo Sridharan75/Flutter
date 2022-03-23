@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
+
+import '../bottomNavigationBarItems/AddCardPage.dart';
+import '../bottomNavigationBarItems/AddTransactionPage.dart';
+import '../bottomNavigationBarItems/SummaryPage.dart';
 
 void addcardtrans() => runApp(const Addcardtrans());
 
 class Addcardtrans extends StatelessWidget {
   const Addcardtrans({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Credit Card Manager';
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +30,27 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Add a card',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Add a Transaction',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Summary',
-      style: optionStyle,
-    ),
+  final List<Widget> _children = [
+    AddCardPage(),
+    AddTransactionPage(),
+    SummaryPage(),
   ];
+  // static const TextStyle optionStyle =
+  // TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  // static const List<Widget> _widgetOptions = <Widget>[
+  //   Text(
+  //     'Index 0: Add a card',
+  //     style: optionStyle,
+  //   ),
+  //   Text(
+  //     'Index 1: Add a Transaction',
+  //     style: optionStyle,
+  //   ),
+  //   Text(
+  //     'Index 2: Summary',
+  //     style: optionStyle,
+  //   ),
+  // ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -51,9 +61,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _children[_selectedIndex],
+
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
