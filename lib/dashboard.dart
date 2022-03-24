@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/credit_card_brand.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:credit_card_manage_2/tabBar/creditcards.dart';
 import 'package:credit_card_manage_2/tabBar/transaction.dart';
 import 'package:credit_card_manage_2/tabBar/addcardtrans.dart';
@@ -126,8 +124,8 @@ class _DashboardState extends State<Dashboard> {
         )),
         body: TabBarView(children: [
           Creditcards(),
-          const Transaction(),
-          const Addcardtrans()
+          transaction(),
+          Addcardtrans()
         ]),
       ),
     );

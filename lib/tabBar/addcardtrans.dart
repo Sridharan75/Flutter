@@ -3,23 +3,14 @@ import '../bottomNavigationBarItems/AddCardPage.dart';
 import '../bottomNavigationBarItems/AddTransactionPage.dart';
 import '../bottomNavigationBarItems/SummaryPage.dart';
 
-class Addcardtrans extends StatelessWidget {
+class Addcardtrans extends StatefulWidget {
   const Addcardtrans({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MyStatefulWidget();
-  }
+  State<Addcardtrans> createState() => _AddcardtransState();
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _AddcardtransState extends State<Addcardtrans> {
   int _selectedIndex = 0;
   final List<Widget> _children = [
     AddCardPage(),
@@ -59,3 +50,4 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+
