@@ -152,7 +152,7 @@ class _AddCardPageState extends State<AddCardPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (!_formkey.currentState!.validate()) {
+                    if (_formkey.currentState!.validate()) {
                       print('valid!');
                     } else {
                       print('invalid!');

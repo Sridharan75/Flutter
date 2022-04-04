@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.credit_card_manage_2">
    <application
-        android:label="credit_card_manage_2"
+        android:label="Credit Card Manager"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

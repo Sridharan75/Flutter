@@ -3,6 +3,7 @@ import 'dashboard.dart';
 
 Future<void> main() async {
   await initialization(null);
+
   runApp(const MyApp());
 }
 
