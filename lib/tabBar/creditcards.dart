@@ -64,6 +64,7 @@ class CreditcardsState extends State<Creditcards> {
             children: [
               TextField(
                 controller: _cardNumberController,
+                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(hintText: 'Card Number last 4 digits'),
               ),
               const SizedBox(
@@ -113,14 +114,14 @@ class CreditcardsState extends State<Creditcards> {
 // Insert a new journal to the database
   Future<void> _addCard() async {
     await SQLHelper.createCard(
-        _cardNumberController.text,_cardNameController.text,_creditLimitController.text);
+        int.parse(_cardNumberController.text),_cardNameController.text,_creditLimitController.text);
     _refreshJournals();
   }
 
   // Update an existing journal
   Future<void> _updateCard(int cardNumber) async {
     await SQLHelper.updateCard(
-        _cardNumberController.text,_cardNameController.text,_creditLimitController.text);
+        int.parse(_cardNumberController.text),_cardNameController.text,_creditLimitController.text);
     _refreshJournals();
   }
 
@@ -130,6 +131,7 @@ class CreditcardsState extends State<Creditcards> {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Successfully deleted a journal!'),
     ));
+
     _refreshJournals();
   }
 
