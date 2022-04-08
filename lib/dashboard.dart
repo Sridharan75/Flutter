@@ -1,7 +1,7 @@
+import 'package:credit_card_manager_beta/tabBar/addcardtrans.dart';
+import 'package:credit_card_manager_beta/tabBar/creditcards.dart';
+import 'package:credit_card_manager_beta/tabBar/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:credit_card_manage_2/tabBar/creditcards.dart';
-import 'package:credit_card_manage_2/tabBar/transaction.dart';
-import 'package:credit_card_manage_2/tabBar/addcardtrans.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);

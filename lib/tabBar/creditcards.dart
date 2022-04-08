@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/homeScreen.dart';
 import '../sql_helper.dart';
 
 void creditcards() => runApp(Creditcards());
@@ -17,7 +18,7 @@ class CreditcardsState extends State<Creditcards> {
   bool _isLoading = true;
   // This function is used to fetch all data from the database
   void _refreshJournals() async {
-    final data = await SQLHelper.getCards();
+    final data = await SQLHelper.getItems();
     setState(() {
       _journals = data;
       _isLoading = false;
@@ -30,20 +31,22 @@ class CreditcardsState extends State<Creditcards> {
     _refreshJournals(); // Loading the diary when the app starts
   }
 
-  final TextEditingController _cardNumberController = TextEditingController();
-  final TextEditingController _cardNameController = TextEditingController();
+  final TextEditingController _bankNameController = TextEditingController();
+  final TextEditingController _cardTypeController = TextEditingController();
   final TextEditingController _creditLimitController = TextEditingController();
-
+  final TextEditingController _cardNumberController = TextEditingController();
   // This function will be triggered when the floating button is pressed
   // It will also be triggered when you want to update an item
-  void _showForm(int? cardNumber) async {
-    if (cardNumber != null) {
+  void _showForm(int? id) async {
+    if (id != null) {
       // id == null -> create new item
       // id != null -> update an existing item
       final existingJournal =
-      _journals.firstWhere((element) => element['cardNumber'] == cardNumber);
-      _cardNameController.text = existingJournal['cardName'];
+      _journals.firstWhere((element) => element['id'] == id);
+      _bankNameController.text = existingJournal['bankName'];
+      _cardTypeController.text = existingJournal['cardType'];
       _creditLimitController.text = existingJournal['creditLimit'];
+      _cardNumberController.text = existingJournal['cardNumber'];
     }
 
     showModalBottomSheet(
@@ -63,16 +66,15 @@ class CreditcardsState extends State<Creditcards> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextField(
-                controller: _cardNumberController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(hintText: 'Card Number last 4 digits'),
+                controller: _bankNameController,
+                decoration: const InputDecoration(hintText: 'Bank Name'),
               ),
               const SizedBox(
                 height: 10,
               ),
               TextField(
-                controller: _cardNameController,
-                decoration: const InputDecoration(hintText: 'Card Name'),
+                controller: _cardTypeController,
+                decoration: const InputDecoration(hintText: 'Card Type(VISA/MASTER/AMERICAN EXPRESS)'),
               ),
               const SizedBox(
                 height: 10,
@@ -82,56 +84,62 @@ class CreditcardsState extends State<Creditcards> {
                 decoration: const InputDecoration(hintText: 'Credit Limit'),
               ),
               const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                controller: _cardNumberController,
+                decoration: const InputDecoration(hintText: 'Card Number (Last 4 digit)'),
+              ),
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
                 onPressed: () async {
                   // Save new journal
-                  if (cardNumber == null) {
-                    await _addCard();
+                  if (id == null) {
+                    await _addItem();
                   }
 
-                  if (cardNumber != null) {
-                    await _updateCard(cardNumber);
+                  if (id != null) {
+                    await _updateItem(id);
                   }
 
                   // Clear the text fields
-                  _cardNumberController.text = '';
-                  _cardNameController.text = '';
+                  _bankNameController.text = '';
+                  _cardTypeController.text = '';
                   _creditLimitController.text = '';
+                  _cardNumberController.text='';
 
                   // Close the bottom sheet
                   Navigator.of(context).pop();
                 },
-                child: Text(cardNumber == null ? 'Create New' : 'Update'),
+                child: Text(id == null ? 'Create New' : 'Update'),
               )
             ],
           ),
         ));
   }
 
-
 // Insert a new journal to the database
-  Future<void> _addCard() async {
-    await SQLHelper.createCard(
-        int.parse(_cardNumberController.text),_cardNameController.text,_creditLimitController.text);
+  Future<void> _addItem() async {
+    await SQLHelper.createItem(
+        _bankNameController.text, _cardTypeController.text, _creditLimitController.text, _cardNumberController.text);
     _refreshJournals();
   }
 
   // Update an existing journal
-  Future<void> _updateCard(int cardNumber) async {
-    await SQLHelper.updateCard(
-        int.parse(_cardNumberController.text),_cardNameController.text,_creditLimitController.text);
+  Future<void> _updateItem(int id) async {
+    await SQLHelper.updateItem(
+        id, _bankNameController.text, _cardTypeController.text,_creditLimitController.text, _cardNumberController.text);
     _refreshJournals();
   }
 
   // Delete an item
-  void _deleteCard(int cardNumber) async {
-    await SQLHelper.deleteCard(cardNumber);
+  void _deleteItem(int id) async {
+    await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Successfully deleted a journal!'),
+      content: Text('Successfully deleted a transaction!'),
     ));
-
     _refreshJournals();
   }
 
@@ -139,41 +147,47 @@ class CreditcardsState extends State<Creditcards> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _isLoading
-            ? const Center(
-          child: CircularProgressIndicator(),
-        )
-            : ListView.builder(
-          itemCount: _journals.length,
-          itemBuilder: (context, index) => Card(
-            color: Colors.orange[200],
-            margin: const EdgeInsets.all(15),
-            child: ListTile(
-                title: Text(_journals[index]['cardNumber']),
-                subtitle: Column(
-                    children:[
-                      Text(_journals[index]['cardName']),
-                      Text(_journals[index]['creditLimit']),
-                    ]
+      body: _isLoading
+          ? const Center(
+        child: CircularProgressIndicator(),
+      )
+          : ListView.builder(
+        itemCount: _journals.length,
+        itemBuilder: (context, index) => Card(
+          color: Colors.blueGrey[200],
+          margin: const EdgeInsets.all(15),
+          child: ListTile(
+              title: Text(_journals[index]['bankName']),
+              subtitle: Column(
+                  children:[
+                    Text(_journals[index]['cardType']),
+                    Text(_journals[index]['creditLimit']),
+                    Text(_journals[index]['cardNumber']),
+                  ]
+              ),
+
+              trailing: SizedBox(
+                width: 140,
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () => _showForm(_journals[index]['id']),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () =>
+                          _deleteItem(_journals[index]['id']),
+                    ),
+                  ],
                 ),
-                trailing: SizedBox(
-                  width: 100,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () => _showForm(_journals[index]['cardNumber']),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () =>
-                            _deleteCard(_journals[index]['cardNumber']),
-                      ),
-                    ],
-                  ),
-                )),
+              ),
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen())),
           ),
         ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () => _showForm(null),
