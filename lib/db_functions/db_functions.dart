@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, avoid_function_literals_in_foreach_calls, invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
-
 import 'package:flutter/cupertino.dart';
 import 'package:credit_card_manager_beta/db_functions/List_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -49,7 +47,7 @@ value.id==null?
       ]):
       await _db1.rawUpdate(
       'UPDATE MoneyManage SET item= "${value.item}", date="${value.date}",amount="${value.amount}", remark="${value.remark}", favourite="false" WHERE id="${value.id}"');
-  // print("Money added successfully");
+  
 }
 
 Future<void> SearchMoney(SearchedItem) async {
@@ -87,9 +85,9 @@ Future<dynamic> GroupByCategory({overall, startDate, endDate, Tsavings}) async {
       "SELECT  category, SUM(amount) tot_amount FROM MoneyManage GROUP BY category")
   :  await _db1.rawQuery(
       "SELECT  category, SUM(amount) tot_amount FROM MoneyManage WHERE date BETWEEN '$startDate' AND '$endDate' GROUP BY category");
-  // values.forEach((map) {
-  //  var grouped = groupModel.fromMap(map);
-  // });
+  
+  
+  
   return values;
 }
 
@@ -126,11 +124,11 @@ Future<void> deleteMoney(int id) async {
 }
 
 Future<void> AddtoFavorite(int id) async {
-  // print("id is $id");
+  
   final favorite = await _db1.rawQuery(
       "SELECT favourite FROM MoneyManage WHERE id=$id");
   String fav= favorite[0]['favourite'].toString();
-  // print("55555 $favorite  $fav");
+  
   fav=='false'?
  await _db1.rawUpdate(
       'UPDATE MoneyManage SET favourite="true" WHERE id=$id')

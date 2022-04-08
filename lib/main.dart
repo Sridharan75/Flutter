@@ -14,10 +14,10 @@ class Styles {
   static const Color custom_income_green = Color(0xFFC8DD8E);
   static const Color custom_expense_red = Color(0xFFF57C61);
   static const Color custom_lend_yellow = Color(0xFFF7D644);
-  //  Color.fromRGBO(247, 214, 68, 0.8),
+  
   static const Color custom_borrow_pink = Color(0xFFDD99C3);
   static const paragraphStructStyle=StrutStyle(
-    // fontSize: 14,
+    
     height: 1.2,
     leading: 1.2,
   );
@@ -57,7 +57,7 @@ class Styles {
     fontSize: 17.0,
     color: Styles.primary_black,
     fontFamily: 'nunito',
-    // fontWeight: FontWeight.w700,
+    
   );
   static const normal20 = TextStyle(
     fontSize: 20.0,
@@ -67,7 +67,7 @@ class Styles {
 }
 
 Future initialization(BuildContext? context) async {
-  //load resources
+  
   await Future.delayed(Duration(microseconds:600));
 }
 

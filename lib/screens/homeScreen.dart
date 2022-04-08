@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, non_constant_identifier_names, use_key_in_widget_constructors, sized_box_for_whitespace, unnecessary_new
-
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_manager_beta/Custom_icons.dart';
@@ -9,41 +7,17 @@ import '../home_widget_all.dart';
 import '../main.dart';
 import '../Add_or_Update_widget.dart';
 
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreen createState() => _HomeScreen();
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  // List<String> _About = [/* 'Developer : Muzammil', */ 'version : 1.0'];
-  //  var year=getYearDB();
   var dateRange;
   var _selectedStartDate;
   var _selectedEndDate;
   Map<String, double> dataMap = {};
   var DataMap;
-
-  // getPieChartValue(_category) async {
-  //   dataMap = {};
-  //   final entireData = await PieChartValue(
-  //       category: _category,
-  //       startDate: _selectedStartDate,
-  //       endDate: _selectedEndDate,
-  //       overall: _overall);
-  // }
-
-  // void setPie(entireData) {
-  //   for (var item in entireData) {
-  //     String SingleItem = item['category'] as String;
-  //     int SingleAmount = item['tot_amount'] as int;
-  //     double Total = SingleAmount.toDouble();
-  //     dataMap[SingleItem] = Total;
-  //   }
-  //   setState(() {
-  //     DataMap = dataMap;
-  //   });
-  // }
 
   bool _favoriteVisible = false;
   String? dropdownvalue;
@@ -91,7 +65,6 @@ class _HomeScreen extends State<HomeScreen> {
         }
       }
       _savingsOverall = _incomeTot - _expenseTot;
-      // print("88 $_savingsOverall , $_incomeTot, $_expenseTot, $_lendTot, $_borrowTot, $_selectedStartDate, $_selectedEndDate");
     }
     setState(() {
       _savingsOverall;
@@ -127,7 +100,6 @@ class _HomeScreen extends State<HomeScreen> {
       _expenseTot = _expenseTotal;
 
       _savingsTot = _incomeTot - _expenseTot;
-      // print("888 $_savingsTot , $_incomeTot, $_expenseTot,  $_selectedStartDate, $_selectedEndDate");
     });
   }
 
@@ -136,7 +108,7 @@ class _HomeScreen extends State<HomeScreen> {
   bool _isAddorUpdate = false;
   int _card = 0;
   bool _overall = false;
-  bool _addButton = false; //clicking add button
+  bool _addButton = false;
   bool _percentInd = false;
   int? currentIndex;
   int _cardList = 0;
@@ -231,14 +203,12 @@ class _HomeScreen extends State<HomeScreen> {
     return Stack(
       children: [
         Container(
-          //main total savings container
           alignment: Alignment.center,
           child: Tooltip(
             message: "Tap here Switch to Overall",
             child: InkWell(
               onTap: () {
                 setState(() {
-                  // print("this is main gesture");
                   currentIndex = null;
                   currentMonth = 0;
                   _overall = true;
@@ -259,16 +229,11 @@ class _HomeScreen extends State<HomeScreen> {
                       const BorderRadius.vertical(bottom: Radius.circular(50)),
                   boxShadow: [
                     BoxShadow(
-                      color: Styles.primary_black
-                          .withOpacity(0.3), //color of shadow
-                      spreadRadius: 1, //spread radius
+                      color: Styles.primary_black.withOpacity(0.3),
+                      spreadRadius: 1,
                       blurRadius: 6,
-                      // blur radius
-                      offset: const Offset(0, 3), // changes position of shadow
-                      //first paramerter of offset is left-right
-                      //second parameter is top to down
+                      offset: const Offset(0, 3),
                     ),
-                    //you can set more BoxShadow() here
                   ],
                 ),
                 child: Column(
@@ -311,222 +276,9 @@ class _HomeScreen extends State<HomeScreen> {
             ),
           ),
         ),
-
-        // Container(
-        //   //top icons home and more
-        //   margin: const EdgeInsets.symmetric(
-        //     vertical: 20,
-        //     horizontal: 50,
-        //   ),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       Container(
-        //         decoration: const BoxDecoration(
-        //           color: Styles.primary_black,
-        //           borderRadius: BorderRadius.all(Radius.circular(25)),
-        //         ),
-        //         alignment: Alignment.topLeft,
-        //         width: 35,
-        //         height: 35,
-        //         child: IconButton(
-        //           onPressed: () {
-        //             setState(() {
-        //               _addButton = false;
-        //               _overall = false;
-        //               _isAddorUpdate = true;
-        //               _isUpdateClicked = false;
-        //               _card = 0;
-        //               // print(_card);
-        //               currentIndex = null;
-        //               _cardList = 0;
-        //               _overall = false;
-        //               _favoriteVisible = false;
-        //               _percentInd = false;
-        //               _cardList = 0;
-        //               currentIndex = null;
-        //               __selectedcontent = {};
-        //               currentMonth = DateTime.now().month;
-        //               DisplayDate = '''$startText - $endText''';
-        //               dateRange = null;
-        //               _selectedStartDate = null;
-        //               getTotalSavings();
-        //             });
-        //           },
-        //           icon: const Icon(
-        //             Icons.home_outlined,
-        //             semanticLabel: "Home",
-        //             size: 20,
-        //             color: Colors.white,
-        //           ),
-        //         ),
-        //       ),
-        //        Container(
-        //                       decoration: const BoxDecoration(
-        //                         color: Styles.primary_black,
-        //                         borderRadius:
-        //                             BorderRadius.all(Radius.circular(25)),
-        //                       ),
-        //                       alignment: Alignment.topLeft,
-        //                       width: 35,
-        //                       height: 35,
-        //                       child: Center(
-        //                         child: popup_menu_button_main(context),
-        //                       ),
-        //                     ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }
-
-//   PopupMenuButton<int> popup_menu_button_main(BuildContext context) {
-//     return PopupMenuButton(
-//
-//                                   color: Styles.primary_black,
-//                                   icon: const Icon(
-//                                     Icons.more_vert_outlined,
-//                                     // semanticLabel: "Menu Button",
-//                                     color: Colors.white,
-//                                     size: 20,
-//                                   ),
-//                                   itemBuilder: (context) => [
-//                                     PopupMenuItem<int>(
-//                                       value: 0,
-//                                       onTap: () {
-//                                         setState(() {
-//                                           // _cardList=0;
-//                                           currentIndex=null;
-//                                           _card=0;
-//                                           _cardList=0;
-//                                           //  _percentInd = false;
-//                                           _favoriteVisible == true
-//                                               ? _favoriteVisible = false
-//                                               : _favoriteVisible = true;
-//                                         });
-//                                       },
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "Favourites",
-//                                             style: _favoriteVisible == false
-//                                                 ? Styles.boldwhite
-//                                                 : Styles.normal17red,
-//                                           ),
-//                                           const Icon(
-//                                             Icons.favorite_outlined,
-//                                             size: 20,
-//                                             color: Colors.redAccent,
-//                                           ),
-//                                         ],
-//                                       ),
-//                                     ),
-//
-//                                     PopupMenuItem<int>(
-//                                       onTap: () {
-//                                         // print("on share app");
-//                                       },
-//                                       value: 3,
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: const [
-//                                           Text(
-//                                             "Share App",
-//                                             style: Styles.boldwhite,
-//                                           ),
-//                                           Icon(
-//                                             Icons.share_outlined,
-//                                             size: 20,
-//                                             color: Colors.white,
-//                                           ),
-//                                         ],
-//                                       ),
-//                                     ),
-//                                     PopupMenuItem<int>(
-//
-//                                       value: 4,
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: const [
-//                                           Text(
-//                                             "Settings",
-//                                             style: Styles.boldwhite,
-//                                           ),
-//                                           Icon(
-//                                             Icons.settings_outlined,
-//                                             size: 20,
-//                                             color: Colors.white,
-//                                           ),
-//                                         ],
-//                                       ),
-//                                     ),
-//                                      PopupMenuItem<int>(
-//                                       value: 5,
-//                                       onTap:(){
-//
-//                                       },
-//
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: const [
-//                                           Text(
-//                                             "About",
-//                                             style: Styles.boldwhite,
-//                                              ),
-//                                           Icon(
-//                                             Icons.info_outline,
-//                                             size: 20,
-//                                             color: Colors.white,
-//                                           ),
-//                                         ],
-//                                       ),
-//                                     ),
-//
-//                                       PopupMenuItem<int>(
-//                                       onTap: () {
-//                                         print("logout button");
-//                                         Log_out();
-//
-//                                       },
-//                                       value: 5,
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: const [
-//                                           Text(
-//                                             "Log Out",
-//                                             style: Styles.boldwhite,
-//                                           ),
-//                                           Icon(
-//                                             Icons.logout_outlined,
-//                                             size: 20,
-//                                             color: Colors.white,
-//                                           ),
-//                                         ],
-//                                       ),
-//                                     ),
-//
-//                                   ],
-//                                   // onSelected: (item) => {print(item)},
-//                                   onSelected: (result) {
-//                                     if(result==5){
-//                                       _showAbout();
-//                                     }
-//   if (result == 4) {
-//       Navigator.push(
-//           context,
-//           MaterialPageRoute(builder: (context) => SettingsScreen()),
-//       );
-//   }
-// },
-//   );
-//   }
 
   Stack scrollView_container(Size size, BuildContext context) {
     return Stack(
@@ -537,7 +289,6 @@ class _HomeScreen extends State<HomeScreen> {
           color: Colors.white,
         ),
         Column(
-          // main horizontal scroll view
           children: [
             Container(
               margin: const EdgeInsets.only(left: 30),
@@ -573,7 +324,6 @@ class _HomeScreen extends State<HomeScreen> {
                                           Text(
                                             DisplayDate,
                                             style: Styles.normal17.copyWith(
-                                                // fontSize: 17,
                                                 color: Colors.deepOrange,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -592,7 +342,7 @@ class _HomeScreen extends State<HomeScreen> {
                                               setState(() {
                                                 currentMonth =
                                                     DateTime.now().month;
-                                                // DisplayDate = 'Choose Date Range';
+
                                                 DisplayDate =
                                                     '''$startText - $endText''';
                                                 dateRange = null;
@@ -655,8 +405,6 @@ class _HomeScreen extends State<HomeScreen> {
 
   Container main_Scrollview_container() {
     return Container(
-      //scroll view main
-
       height: 140,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -681,14 +429,11 @@ class _HomeScreen extends State<HomeScreen> {
                               const BorderRadius.all(Radius.circular(30)),
                           boxShadow: [
                             BoxShadow(
-                              color: Styles.primary_black
-                                  .withOpacity(0.3), //color of shadow
-                              spreadRadius: 0.5, //spread radius
+                              color: Styles.primary_black.withOpacity(0.3),
+                              spreadRadius: 0.5,
                               blurRadius: 5,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
+                              offset: const Offset(0, 3),
                             ),
-                            //you can set more BoxShadow() here
                           ],
                         ),
                       ),
@@ -724,7 +469,6 @@ class _HomeScreen extends State<HomeScreen> {
           const SizedBox(
             width: 30,
           ),
-          //Credit
           Tooltip(
             message: "Expense Chart Button",
             child: InkWell(
@@ -748,13 +492,10 @@ class _HomeScreen extends State<HomeScreen> {
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                       boxShadow: [
                         BoxShadow(
-                          color: Styles.primary_black
-                              .withOpacity(0.3), //color of shadow
-                          spreadRadius: 0.5, //spread radius
+                          color: Styles.primary_black.withOpacity(0.3),
+                          spreadRadius: 0.5,
                           blurRadius: 5,
-                          // blur radius
-                          offset:
-                          const Offset(0, 3), // changes position of shadow
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -763,8 +504,8 @@ class _HomeScreen extends State<HomeScreen> {
                     margin: const EdgeInsets.symmetric(
                       vertical: 10,
                     ),
-                    width: 140, height: 140,
-                    // color: Colors.blue,
+                    width: 140,
+                    height: 140,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -791,12 +532,10 @@ class _HomeScreen extends State<HomeScreen> {
           const SizedBox(
             width: 30,
           ),
-          //Income
           Tooltip(
             message: "Income Chart Button",
             child: InkWell(
               onTap: () {
-                // getAllitemWidget();
                 setState(() {
                   _favoriteVisible = false;
                   _addButton = false;
@@ -816,17 +555,11 @@ class _HomeScreen extends State<HomeScreen> {
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                       boxShadow: [
                         BoxShadow(
-                          color: Styles.primary_black
-                              .withOpacity(0.3), //color of shadow
-                          spreadRadius: 0.5, //spread radius
+                          color: Styles.primary_black.withOpacity(0.3),
+                          spreadRadius: 0.5,
                           blurRadius: 5,
-                          // blur radius
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                          //first paramerter of offset is left-right
-                          //second parameter is top to down
+                          offset: const Offset(0, 3),
                         ),
-                        //you can set more BoxShadow() here
                       ],
                     ),
                   ),
@@ -864,7 +597,6 @@ class _HomeScreen extends State<HomeScreen> {
           const SizedBox(
             width: 30,
           ),
-
         ],
       ),
     );
@@ -873,15 +605,11 @@ class _HomeScreen extends State<HomeScreen> {
   Container addButton_container(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      // ADD BUTTON POPUP A CONTAINER
       margin: const EdgeInsets.only(bottom: 90),
-      // bottom: 90,
-      // left: 47,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
           Container(
-            // alignment: Alignment.bottomCenter,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -892,15 +620,14 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ],
             ),
-            //add Button clicked
             height: 150,
             width: 300, /* color: Styles.primary_black */
           ),
           Container(
-            width: 280, height: 100,
+            width: 280,
+            height: 100,
             /* color: Colors.red,  */
             alignment: Alignment.topLeft,
-            // margin: EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -946,7 +673,6 @@ class _HomeScreen extends State<HomeScreen> {
                           decoration: const BoxDecoration(
                             color: Styles.custom_income_green,
                             borderRadius: BorderRadius.all(Radius.circular(30)),
-                            //
                           ),
                         ),
                       ),
@@ -1003,7 +729,6 @@ class _HomeScreen extends State<HomeScreen> {
 
   Positioned bottomNavigation_buttons(Size size) {
     return Positioned(
-      //bottom navigation bar
       bottom: 0,
       left: 0,
       child: Container(
@@ -1030,7 +755,7 @@ class _HomeScreen extends State<HomeScreen> {
                       _addButton == false
                           ? _addButton = true
                           : _addButton = false;
-                      // _cardList=0;
+
                       _card = 0;
                     });
                   }),
@@ -1042,7 +767,6 @@ class _HomeScreen extends State<HomeScreen> {
   }
 
   Future pickDateRange(BuildContext context) async {
-    // final dateFormat = DateFormat("yyyy-MM-dd");
     final initialDateRange = DateTimeRange(
       start: DateTime.now().subtract(const Duration(hours: 24 * 3)),
       end: DateTime.now(),
@@ -1063,7 +787,7 @@ class _HomeScreen extends State<HomeScreen> {
     _selectedEndDate = DateFormat('yyyy-MM-dd').format(dateRange!.end);
     var _selectedFirst = DateFormat('MMM dd').format(dateRange!.start);
     var _selectedEnd = DateFormat('MMM dd').format(dateRange!.end);
-    // print(dateRange);
+
     if (dateRange != null) {
       getAllitemWidget();
       setState(() {
@@ -1073,7 +797,6 @@ class _HomeScreen extends State<HomeScreen> {
   }
 
   Future<dynamic> _showAbout() {
-    // print("show about");
     return showDialog(
       context: context,
       builder: (context) {
@@ -1134,7 +857,7 @@ class BNBCustomPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     Path path = Path();
-    path.moveTo(0, 10); // Start
+    path.moveTo(0, 10);
     path.quadraticBezierTo(size.width * 0.20, 0, size.width * 0.35, 0);
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 10);
     path.arcToPoint(

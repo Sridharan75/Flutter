@@ -1,5 +1,5 @@
-// import 'package:flutter/cupertino.dart';
-// ignore_for_file: sized_box_for_whitespace, non_constant_identifier_names, deprecated_member_use
+
+
 
 import 'package:flutter/material.dart';
 import 'package:credit_card_manager_beta/db_functions/List_model.dart';
@@ -71,7 +71,7 @@ class _category_cardsState extends State<category_cards> {
     super.initState();
   }
 
-  @override //this widget is add student
+  @override 
   Widget build(BuildContext context) {
     _dateController.text = DateFormat("MMM dd").format(_selectedDate);
     _categoryController.text.length > 1
@@ -88,7 +88,7 @@ class _category_cardsState extends State<category_cards> {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              // scrollDirection: Axis.vertical,
+              
 
               children: [
                 Container(
@@ -98,14 +98,14 @@ class _category_cardsState extends State<category_cards> {
                     boxShadow: [
                       BoxShadow(
                         color: Styles.primary_black
-                            .withOpacity(0.3), //color of shadow
-                        spreadRadius: 0.5, //spread radius
+                            .withOpacity(0.3), 
+                        spreadRadius: 0.5, 
                         blurRadius: 5,
  
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset: const Offset(0, 3), 
                  
                       ),
-                      //you can set more BoxShadow() here
+                      
                     ],
                   ),
                   margin:const EdgeInsets.all(10),
@@ -113,7 +113,7 @@ class _category_cardsState extends State<category_cards> {
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
+                      
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(
@@ -183,7 +183,7 @@ class _category_cardsState extends State<category_cards> {
                                       children: [
                                         Card(
                                           elevation: 0,
-                                          // width: 400, height: 50,
+                                          
                                           child: TextFormField(
                                             onTap: () => setState(() {
                                               _isClicked = true;
@@ -204,8 +204,8 @@ class _category_cardsState extends State<category_cards> {
                                               contentPadding:const  EdgeInsets.only(
                                                 top: 20,
                                               ),
-                                              // errorStyle: TextStyle(fontSize: 9, height: 0.3),
-                                              // border: OutlineInputBorder(),
+                                              
+                                              
 
                                               hintText: 'Enter the Item',
                                               hintStyle: Styles.normal17.copyWith(
@@ -228,7 +228,7 @@ class _category_cardsState extends State<category_cards> {
                                           children: [
                                             Card(
                                               elevation: 0,
-                                              // width: 400, height: 50,
+                                              
                                               child: TextFormField(
                                                 onTap: () async {
                                                   final _selectedDateTemp =
@@ -242,7 +242,7 @@ class _category_cardsState extends State<category_cards> {
                                                     lastDate: DateTime.now(),
                                                   );
 
-                                                  //  print(_selected_date);
+                                                  
                                                   if (_selectedDateTemp ==
                                                       null) {
                                                     return;
@@ -250,13 +250,13 @@ class _category_cardsState extends State<category_cards> {
                                                     _selectedDate =
                                                         _selectedDateTemp;
                                                     setState(() {});
-                                                    // print(_selected_date.toString());
-                                                    // setState(() {
-                                                    //   _dateController.text =
-                                                    //        DateFormat('MMM dd')
-                                                    //         .format(
-                                                    //             _selectedDate);
-                                                    // });
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
                                                   }
                                                 },
                                                 readOnly: true,
@@ -275,7 +275,7 @@ class _category_cardsState extends State<category_cards> {
                                                           .withOpacity(.8),
                                                     ),
                                                   ),
-                                                  // enabled: false,
+                                                  
                                                   contentPadding:
                                                       const EdgeInsets.only(
                                                     top: 20,
@@ -295,49 +295,49 @@ class _category_cardsState extends State<category_cards> {
                                           ],
                                         ),
 
-//                                     sfDaterangepicker
-//                                      SfDateRangePicker(
-//                                        monthFormat: 'MMM',
-                                        // minDate: DateTime(2010),
-//                                        maxDate: DateTime.now(),
-//                                       //  enableMultiView: true,
-//                                         selectionMode: DateRangePickerSelectionMode.single,
-//                                             view: DateRangePickerView.month,
-//                                              onViewChanged: (DateRangePickerViewChangedArgs args) {
-//                                          final PickerDateRange visibleDates = args.visibleDateRange;
-//                                          final DateRangePickerView view = args.view;
-//                                        },
-//                                             // monthViewSettings: DateRangePickerMonthViewSettings(showTrailingAndLeadingDates: true,
-//                                             // ),
-//                                             onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
-//     // var _startDate =
-//     //     DateFormat('yyyy-MM-dd').format(args.value).toString();
-//         //   var  _endDate =
-//         // DateFormat('yyyy-MM-dd').format(args.value.endDate ?? args.value.startDate).toString();
-// // DateTime start=new DateTime(2020, 02, 04);
-// // DateTime end=new DateTime(2020,03,04);
-// // var diff=end.difference(start);
-// // print("difference $diff");
-//         // print("start $_startDate end date $_endDate");
-//         // var diff= DateTime.now().difference(DateFormat('yyyy-MM-dd').format(args.value.startDate).toString()).inDays
-//         // print("{$_endDate - $_startDate}");
-//                                          final dynamic value = args.value;
-//                                          print("value      $value");
-//                                         //  now=value;
-//                                        },
-//                                             monthCellStyle: DateRangePickerMonthCellStyle(
-//                                                todayTextStyle: TextStyle(color: Styles.primary_black),
-//                                               /*   cellDecoration: BoxDecoration(color:Colors.teal), */
-//                                               ),
-//                                           ),
+
+
+
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                         Card(
                                           elevation: 0,
-                                          // width: 400, height: 50,
+                                          
                                           child: TextFormField(
                                             keyboardType: TextInputType.number,
                                             controller: _amountController,
-                                            // obscureText: true,
+                                            
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
@@ -373,7 +373,7 @@ class _category_cardsState extends State<category_cards> {
                                                   const EdgeInsets.only(
                                                 top: 20,
                                               ),
-                                              // border: OutlineInputBorder(),
+                                              
                                               hintText: 'Enter the amount',
                                               hintStyle: Styles.normal17
                                                   .copyWith(
@@ -384,7 +384,7 @@ class _category_cardsState extends State<category_cards> {
                                         ),
                                         Card(
                                           elevation: 0,
-                                          // width: 400, height: 50,
+                                          
                                           child: TextFormField(
                                             controller: _remarkController,
                                             decoration: InputDecoration(
@@ -401,8 +401,8 @@ class _category_cardsState extends State<category_cards> {
                                               contentPadding:
                                                   const EdgeInsets.only(
                                                 top: 20,
-                                                // bottom: 5,
-                                                // left: 30,
+                                                
+                                                
                                               ),
                                               hintText: 'Remark',
                                               hintStyle: Styles.normal17
@@ -430,7 +430,7 @@ class _category_cardsState extends State<category_cards> {
                                   ),
                                   onPressed: widget._isAddorUpdate == true
                                       ? () {
-                                          // print("card value ${widget._card}");
+                                          
                                           if (_globalKey.currentState!
                                               .validate()) {
                                             onAddorUpdateButton(
@@ -444,7 +444,7 @@ class _category_cardsState extends State<category_cards> {
                                       : () {
                                           if (_globalKey.currentState!
                                               .validate()) {
-                                            // checkLogin(context);
+                                            
                                             onAddorUpdateButton(
                                                 id: widget
                                                     .selectedcontent['id']);
@@ -469,7 +469,7 @@ class _category_cardsState extends State<category_cards> {
 
                               ],
                             ),
-                            _isClicked == true //its for listing previus items
+                            _isClicked == true 
                                 ? items_list_after_click()
                                 : Container(),
                           ],
@@ -488,7 +488,7 @@ class _category_cardsState extends State<category_cards> {
             ),
           ),
 
-          // }
+          
         ),
       ],
     );
@@ -534,10 +534,10 @@ class _category_cardsState extends State<category_cards> {
     final _date = DateFormat('yyyy-MM-dd').format(_selectedDate);
     final _amount = int.parse(_amountController.text.trim());
     final _remark = _remarkController.text.trim();
-    // _categoryController.text = "";
-    // _amountController.text = "";
-    // _remarkController.text = "";
-    // MoneyListNotifier.notifyListeners();
+    
+    
+    
+    
 
     final _singleItem = id != null
         ? MoneyModel(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable, camel_case_types, use_key_in_widget_constructors, non_constant_identifier_names, unrelated_type_equality_checks, unnecessary_null_comparison
+
 
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +121,7 @@ class _list_widget extends State<list_widget> {
               dateSets.add(AllRows[i]['date']);
             }
           }
-          dateSets.add(null); //dummy data in the end of dateset list
+          dateSets.add(null); 
           return Expanded(
             child: ListView(
               children: [],
@@ -138,7 +138,7 @@ class _list_widget extends State<list_widget> {
         ? val.toLowerCase() == 'false'
         : val.toLowerCase() == 'true';
 
-    // print(x);
+    
     return showModalBottomSheet<void>(
       backgroundColor: Styles.primary_color.withOpacity(0),
       context: context,
@@ -149,10 +149,10 @@ class _list_widget extends State<list_widget> {
             borderRadius:const  BorderRadius.vertical(top: Radius.circular(30)),
             boxShadow: [
               BoxShadow(
-                color: Styles.primary_black.withOpacity(0.3), //color of shadow
-                spreadRadius: 0.5, //spread radius
+                color: Styles.primary_black.withOpacity(0.3), 
+                spreadRadius: 0.5, 
                 blurRadius: 5,
-                offset: const Offset(0, -3), // changes position of shadow
+                offset: const Offset(0, -3), 
               ),
             ],
           ),
@@ -182,7 +182,7 @@ class _list_widget extends State<list_widget> {
                               ),
                             ],
                           ),
-                          // SizedBox(height: 10,),
+                          
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -216,7 +216,7 @@ class _list_widget extends State<list_widget> {
                           isFavorite: fav,
                           iconSize: 28,
                           valueChanged: (_isFavorite) {
-                            // Scaffold.of(context).activate;
+                            
                             AddtoFavorite(
                                 int.parse('${_selectedcontent['id']}'));
                             widget.toggleisUpdateClicked(_selectedcontent,
@@ -237,7 +237,7 @@ class _list_widget extends State<list_widget> {
                       Container(
                         height: 40, width: 33,
                         alignment: Alignment.center,
-                        //  color: Colors.red,
+                        
                         child: Tooltip(
                           message: "Edit ${_selectedcontent['item']} item",
                           child: IconButton(

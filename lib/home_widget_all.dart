@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, unrelated_type_equality_checks, non_constant_identifier_names
+
 
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,7 @@ import 'db_functions/db_functions.dart';
 import 'package:intl/intl.dart';
 import 'main.dart';
 import 'package:credit_card_manager_beta/screens/homeScreen.dart';
-// import 'screens/homeScreen.dart';
+
 
 class home_content_all_widget extends StatefulWidget {
   home_content_all_widget(
@@ -43,7 +43,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
     setState(() {
       dateSets = [];
     });
-    // TODO: implement initState
+    
     super.initState();
   }
 
@@ -68,7 +68,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
           int pointer = -1;
           int counter = -1;
           dateSets = [];
-          // dateSets=[];
+          
           if (listItem == null) {
             return const CircularProgressIndicator();
           }
@@ -119,7 +119,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
               dateSets.add(AllRows[i]['date']);
             }
           }
-          dateSets.add(null); //dummy data in the end of dateset list
+          dateSets.add(null); 
           return Expanded(
             child: ListView(
               children: [
@@ -133,11 +133,11 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                         boxShadow: [
                           BoxShadow(
                             color: Styles.primary_black
-                                .withOpacity(0.3), //color of shadow
-                            spreadRadius: 0.5, //spread radius
+                                .withOpacity(0.3), 
+                            spreadRadius: 0.5, 
                             blurRadius: 5,
                             offset: const Offset(
-                                0, 3), // changes position of shadow
+                                0, 3), 
                           ),
                         ],
                       ),
@@ -166,9 +166,9 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                           for (var i in AllRows)
                             Container(
                                 child: Column(
-                              // mainAxisAlignment: MainAxisAlignment.start,
+                              
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              // final this_is;
+                              
 
                               children: [
                                 dateSets[++counter] != null
@@ -194,7 +194,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                                     : Container(),
                                 InkWell(
                                   onTap: () {
-                                    // print(i.toString());
+                                    
                                     bottomSheet_edit(context, i);
                                   },
                                   child: Row(
@@ -241,7 +241,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                             )),
                         ]),
 
-                        // }
+                        
                       ),
                     ),
                     const SizedBox(
@@ -273,10 +273,10 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
             boxShadow: [
               BoxShadow(
-                color: Styles.primary_black.withOpacity(0.3), //color of shadow
-                spreadRadius: 0.5, //spread radius
+                color: Styles.primary_black.withOpacity(0.3), 
+                spreadRadius: 0.5, 
                 blurRadius: 5,
-                offset: const Offset(0, -3), // changes position of shadow
+                offset: const Offset(0, -3), 
               ),
             ],
           ),
@@ -306,7 +306,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                               ),
                             ],
                           ),
-                          // SizedBox(height: 10,),
+                          
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -340,7 +340,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                           isFavorite: fav,
                           iconSize: 28,
                           valueChanged: (_isFavorite) {
-                            // Scaffold.of(context).activate;
+                            
                             AddtoFavorite(
                                 int.parse('${_selectedcontent['id']}'));
                             widget.toggleisUpdateClicked(_selectedcontent,
@@ -361,7 +361,7 @@ class _home_content_all_widgetState extends State<home_content_all_widget> {
                       Container(
                         height: 40, width: 33,
                         alignment: Alignment.center,
-                        //  color: Colors.red,
+                        
                         child: Tooltip(
                           message: "Edit ${_selectedcontent['item']} item",
                           child: IconButton(

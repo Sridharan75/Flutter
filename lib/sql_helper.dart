@@ -13,9 +13,6 @@ class SQLHelper {
       )
       """);
   }
-// id: the id of a item
-// title, description: name and description of your activity
-// created_at: the time that the item was created. It will be automatically handled by SQLite
 
   static Future<sql.Database> db() async {
     return sql.openDatabase(
@@ -27,47 +24,48 @@ class SQLHelper {
     );
   }
 
-  // Create new item (journal)
-  static Future<int> createItem(String bankName, String? cardType, String creditLimit, String cardNumber) async {
-    final db = await SQLHelper.db();
-
-    final data = {'bankName': bankName, 'cardType': cardType,'creditLimit': creditLimit, 'cardNumber': cardNumber};
-    final id = await db.insert('items', data,
-        conflictAlgorithm: sql.ConflictAlgorithm.replace);
-    return id;
-  }
-
-  // Read all items (journals)
-  static Future<List<Map<String, dynamic>>> getItems() async {
-    final db = await SQLHelper.db();
-    return db.query('items', orderBy: "id");
-  }
-
-  // Read a single item by id
-  static Future<List<Map<String, dynamic>>> getItem(int id) async {
-    final db = await SQLHelper.db();
-    return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
-  }
-
-  // Update an item by id
-  static Future<int> updateItem(
-      int id, String bankName, String? cardType, String creditLimit, String cardNumber) async {
+  static Future<int> createItem(String bankName, String? cardType,
+      String creditLimit, String cardNumber) async {
     final db = await SQLHelper.db();
 
     final data = {
       'bankName': bankName,
       'cardType': cardType,
       'creditLimit': creditLimit,
-      'cardNumber' : cardNumber,
+      'cardNumber': cardNumber
+    };
+    final id = await db.insert('items', data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    return id;
+  }
+
+  static Future<List<Map<String, dynamic>>> getItems() async {
+    final db = await SQLHelper.db();
+    return db.query('items', orderBy: "id");
+  }
+
+  static Future<List<Map<String, dynamic>>> getItem(int id) async {
+    final db = await SQLHelper.db();
+    return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
+  }
+
+  static Future<int> updateItem(int id, String bankName, String? cardType,
+      String creditLimit, String cardNumber) async {
+    final db = await SQLHelper.db();
+
+    final data = {
+      'bankName': bankName,
+      'cardType': cardType,
+      'creditLimit': creditLimit,
+      'cardNumber': cardNumber,
       'createdAt': DateTime.now().toString()
     };
 
     final result =
-    await db.update('items', data, where: "id = ?", whereArgs: [id]);
+        await db.update('items', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 
-  // Delete transaction
   static Future<void> deleteItem(int id) async {
     final db = await SQLHelper.db();
     try {
